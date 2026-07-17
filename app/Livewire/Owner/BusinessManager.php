@@ -18,15 +18,15 @@ class BusinessManager extends Component
     public ?string $category_id = null;
     public ?string $region_id = null;
     public ?string $district_id = null;
-    public string $address_text = '';
-    public string $ghanapost_gps = '';
+    public ?string $address_text = null;
+    public ?string $ghanapost_gps = null;
     public string $phone = '';
-    public string $whatsapp_number = '';
-    public string $email = '';
-    public string $website = '';
-    public string $momo_mtn = '';
-    public string $momo_vodafone = '';
-    public string $momo_airteltigo = '';
+    public ?string $whatsapp_number = null;
+    public ?string $email = null;
+    public ?string $website = null;
+    public ?string $momo_mtn = null;
+    public ?string $momo_vodafone = null;
+    public ?string $momo_airteltigo = null;
     public $logo = null;
     public bool $removeLogo = false;
 

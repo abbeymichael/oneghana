@@ -65,14 +65,18 @@ class ReviewTest extends TestCase
 
     public function test_review_defaults_to_pending(): void
     {
-        $review = Review::create([
+        Review::create([
             'business_id' => $this->business->id,
             'user_id' => $this->reviewer->id,
             'rating' => 4,
             'body' => 'Good service overall. Would recommend to friends and family.',
         ]);
 
-        $this->assertEquals('pending', $review->status);
+        $this->assertDatabaseHas('reviews', [
+            'business_id' => $this->business->id,
+            'rating' => 4,
+            'status' => 'pending',
+        ]);
     }
 
     public function test_review_can_be_approved(): void

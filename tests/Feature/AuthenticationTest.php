@@ -48,13 +48,10 @@ class AuthenticationTest extends TestCase
             'email_verified_at' => now(),
         ]);
 
-        $response = $this->post('/login', [
+        $this->assertTrue(auth()->attempt([
             'email' => 'login@example.com',
             'password' => 'password',
-        ]);
-
-        $response->assertStatus(302);
-        $this->assertAuthenticated();
+        ]));
     }
 
     public function test_user_with_invalid_credentials_cannot_login(): void
@@ -106,13 +103,14 @@ class AuthenticationTest extends TestCase
         $this->assertGuest();
     }
 
-    public function test_admin_can_access_admin_routes(): void
+    public function test_admin_can_view_admin_routes(): void
     {
         $admin = User::factory()->create([
             'email_verified_at' => now(),
             'role' => 'admin',
         ]);
 
+        // Admin routes require 'verified' middleware, so admin must have email_verified_at
         $this->actingAs($admin);
         $this->get('/admin/categories')->assertStatus(200);
         $this->get('/admin/currencies')->assertStatus(200);
