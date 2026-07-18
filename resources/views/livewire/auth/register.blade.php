@@ -1,197 +1,167 @@
 <div>
-    <div class="min-h-screen bg-[#fcf9f8] flex">
-        {{-- Left: Brand Imagery --}}
-        <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-[#316948] to-[#1c1b1b]">
-            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 25% 25%, #f1c100 1px, transparent 1px), radial-gradient(circle at 75% 75%, #f1c100 1px, transparent 1px); background-size: 40px 40px;"></div>
-            <div class="relative flex flex-col justify-center px-16 w-full">
-                <div class="mb-8">
-                    <a href="{{ route('home') }}" class="inline-flex items-center gap-3">
-                        <div class="w-12 h-12 bg-[#f1c100] rounded-lg flex items-center justify-center">
-                            <span class="text-2xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque']">GD</span>
-                        </div>
-                        <span class="text-3xl font-black text-white font-['Bricolage_Grotesque'] tracking-tight">GhanaDirect</span>
-                    </a>
+    {{-- Auth card centered within layouts.app's <main> slot --}}
+    <div class="flex-grow flex items-center justify-center py-xl px-container-margin relative overflow-hidden bg-background">
+        {{-- Abstract background decoration --}}
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+            <div class="absolute top-10 right-10 w-64 h-64 border-[1.5px] border-on-surface -rotate-12"></div>
+            <div class="absolute bottom-20 left-10 w-96 h-96 border-[1.5px] border-secondary rotate-6"></div>
+        </div>
+
+        {{-- Authentication Container --}}
+        <div class="grid grid-cols-1 lg:grid-cols-2 max-w-5xl w-full bg-surface border-[1.5px] border-on-surface shadow-none overflow-hidden">
+
+            {{-- Left: Brand Imagery --}}
+            <div class="hidden lg:flex flex-col justify-between p-xl bg-secondary-container relative">
+                <div>
+                    <h1 class="font-display-lg text-display-lg text-on-secondary-container mb-md leading-tight">
+                        Join the<br><span class="text-primary">Marketplace</span><br>of Ghana.
+                    </h1>
+                    <p class="font-body-lg text-on-secondary-container max-w-sm">
+                        List your business and reach customers across all 16 regions.
+                    </p>
                 </div>
 
-                <h1 class="text-5xl font-black text-white font-['Bricolage_Grotesque'] leading-[1.1] tracking-tight mb-6">
-                    Join the<br>Marketplace<br>of Ghana
-                </h1>
-
-                <p class="text-xl text-white/80 font-['Inter'] leading-relaxed mb-12 max-w-md">
-                    Create your account and connect with millions of customers across all 16 regions of Ghana.
-                </p>
-
-                {{-- Benefits List --}}
-                <div class="space-y-5 max-w-md">
+                {{-- Benefits --}}
+                <div class="space-y-md my-lg">
                     @php
                         $benefits = [
-                            ['icon' => 'store', 'title' => 'List Your Business', 'desc' => 'Free listing with rich media, products, and services'],
-                            ['icon' => 'public', 'title' => 'Reach More Customers', 'desc' => 'Get discovered by customers across Ghana'],
-                            ['icon' => 'analytics', 'title' => 'Track Performance', 'desc' => 'Dashboard analytics and customer insights'],
+                            ['icon' => 'storefront',  'title' => 'List Your Business',   'desc' => 'Free listing with rich media, products & services'],
+                            ['icon' => 'public',       'title' => 'Reach More Customers', 'desc' => 'Get discovered by shoppers across Ghana'],
+                            ['icon' => 'bar_chart',    'title' => 'Track Performance',    'desc' => 'Analytics dashboard & customer insights'],
                         ];
                     @endphp
                     @foreach($benefits as $b)
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-white/15 flex items-center justify-center flex-shrink-0">
-                                <span class="material-symbols-outlined text-[#f1c100] text-xl">{{ $b['icon'] }}</span>
+                        <div class="flex items-start gap-sm">
+                            <div class="w-8 h-8 bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                                <span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">{{ $b['icon'] }}</span>
                             </div>
                             <div>
-                                <h3 class="font-bold text-white font-['Inter']">{{ $b['title'] }}</h3>
-                                <p class="text-sm text-white/70 font-['Inter']">{{ $b['desc'] }}</p>
+                                <p class="font-label-caps text-label-caps text-on-secondary-container">{{ $b['title'] }}</p>
+                                <p class="font-body-sm text-on-secondary-container/70">{{ $b['desc'] }}</p>
                             </div>
                         </div>
                     @endforeach
                 </div>
 
-                {{-- Decorative Kente Strip --}}
-                <div class="absolute bottom-0 left-0 right-0 h-2"
-                     style="background: repeating-linear-gradient(90deg, #316948 0, #316948 20px, #f1c100 20px, #f1c100 40px, #b90027 40px, #b90027 60px, #1c1b1b 60px, #1c1b1b 80px);">
+                {{-- Trust badge --}}
+                <div class="flex items-center gap-sm">
+                    <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    <span class="font-label-caps text-label-caps text-on-secondary-container">Trusted by 50,000+ Enterprises</span>
                 </div>
             </div>
-        </div>
 
-        {{-- Right: Register Form --}}
-        <div class="w-full lg:w-1/2 flex items-center justify-center px-6 py-12">
-            <div class="w-full max-w-md">
-                {{-- Mobile Brand --}}
-                <div class="lg:hidden text-center mb-10">
-                    <a href="{{ route('home') }}" class="inline-flex items-center gap-2">
-                        <div class="w-10 h-10 bg-[#f1c100] rounded-lg flex items-center justify-center">
-                            <span class="text-xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque']">GD</span>
-                        </div>
-                        <span class="text-2xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque']">GhanaDirect</span>
-                    </a>
+            {{-- Right: Register Form --}}
+            <div class="p-lg md:p-xl flex flex-col justify-center bg-surface relative">
+                <div class="mb-lg">
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-xs uppercase tracking-tight">Create Account</h2>
+                    <p class="font-body-sm text-on-surface-variant">Join Ghana's fastest growing business directory.</p>
                 </div>
 
-                <div class="bg-white rounded-xl p-8 pop-border-primary">
-                    <h2 class="text-3xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque'] tracking-tight mb-2">Create account</h2>
-                    <p class="text-[#6b7280] font-['Inter'] mb-8">Join Ghana's fastest growing business network</p>
+                {{-- Errors --}}
+                @if($errors->any())
+                    <div class="mb-md p-sm bg-error-container border-l-4 border-error">
+                        <p class="font-body-sm text-error font-semibold">{{ $errors->first() }}</p>
+                    </div>
+                @endif
 
-                    {{-- Error Message --}}
-                    @if($errors->any())
-                        <div class="mb-6 p-4 rounded-lg bg-red-50 border-l-4 border-[#b90027]">
-                            <div class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-[#b90027] text-lg">error</span>
-                                <p class="text-sm font-semibold text-[#b90027] font-['Inter']">{{ $errors->first() }}</p>
-                            </div>
+                <form wire:submit="register" class="space-y-md">
+                    {{-- Full Name --}}
+                    <div>
+                        <label for="name" class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">FULL NAME</label>
+                        <div class="relative">
+                            <span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">person</span>
+                            <input wire:model="name"
+                                   type="text"
+                                   id="name"
+                                   autocomplete="name"
+                                   required
+                                   placeholder="e.g. Kwame Asante"
+                                   class="w-full pl-xl pr-md py-md bg-surface-container-lowest border-[1.5px] border-on-surface font-body-md placeholder:text-outline-variant transition-all focus:border-primary focus:outline-none">
                         </div>
-                    @endif
+                        @error('name') <p class="font-body-sm text-error mt-xs">{{ $message }}</p> @enderror
+                    </div>
 
-                    <form wire:submit="register" class="space-y-5">
-                        {{-- Name --}}
-                        <div>
-                            <label for="name" class="block text-sm font-semibold text-[#1c1b1b] font-['Inter'] mb-1.5">Full Name</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                    <span class="material-symbols-outlined text-[#9ca3af] text-xl">person</span>
-                                </div>
-                                <input
-                                    wire:model="name"
-                                    type="text"
-                                    id="name"
-                                    placeholder="Kwame Asante"
-                                    class="w-full pl-11 pr-4 py-3 rounded-lg border-2 border-[#d1d5db] bg-white text-[#1c1b1b] font-['Inter'] placeholder:text-[#9ca3af] focus:border-[#b90027] focus:ring-2 focus:ring-[#b90027]/20 outline-none transition-all duration-200"
-                                    required
-                                    autocomplete="name"
-                                >
-                            </div>
-                            @error('name') <p class="mt-1.5 text-sm text-[#b90027] font-['Inter']">{{ $message }}</p> @enderror
+                    {{-- Email --}}
+                    <div>
+                        <label for="email" class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">EMAIL ADDRESS</label>
+                        <div class="relative">
+                            <span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">mail</span>
+                            <input wire:model="email"
+                                   type="email"
+                                   id="email"
+                                   autocomplete="email"
+                                   required
+                                   placeholder="e.g. kwame@direct.com.gh"
+                                   class="w-full pl-xl pr-md py-md bg-surface-container-lowest border-[1.5px] border-on-surface font-body-md placeholder:text-outline-variant transition-all focus:border-primary focus:outline-none">
                         </div>
+                        @error('email') <p class="font-body-sm text-error mt-xs">{{ $message }}</p> @enderror
+                    </div>
 
-                        {{-- Email --}}
-                        <div>
-                            <label for="email" class="block text-sm font-semibold text-[#1c1b1b] font-['Inter'] mb-1.5">Email Address</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                    <span class="material-symbols-outlined text-[#9ca3af] text-xl">mail</span>
-                                </div>
-                                <input
-                                    wire:model="email"
-                                    type="email"
-                                    id="email"
-                                    placeholder="you@example.com"
-                                    class="w-full pl-11 pr-4 py-3 rounded-lg border-2 border-[#d1d5db] bg-white text-[#1c1b1b] font-['Inter'] placeholder:text-[#9ca3af] focus:border-[#b90027] focus:ring-2 focus:ring-[#b90027]/20 outline-none transition-all duration-200"
-                                    required
-                                    autocomplete="email"
-                                >
-                            </div>
-                            @error('email') <p class="mt-1.5 text-sm text-[#b90027] font-['Inter']">{{ $message }}</p> @enderror
+                    {{-- Password --}}
+                    <div>
+                        <label for="password" class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">PASSWORD</label>
+                        <div class="relative" x-data="{ show: false }">
+                            <span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">lock</span>
+                            <input wire:model="password"
+                                   :type="show ? 'text' : 'password'"
+                                   id="password"
+                                   autocomplete="new-password"
+                                   required
+                                   placeholder="Min. 8 characters"
+                                   class="w-full pl-xl pr-xl py-md bg-surface-container-lowest border-[1.5px] border-on-surface font-body-md placeholder:text-outline-variant transition-all focus:border-primary focus:outline-none">
+                            <button type="button" @click="show = !show"
+                                    class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant hover:text-on-surface transition-colors"
+                                    x-text="show ? 'visibility_off' : 'visibility'">visibility</button>
                         </div>
+                        @error('password') <p class="font-body-sm text-error mt-xs">{{ $message }}</p> @enderror
+                    </div>
 
-                        {{-- Password --}}
-                        <div>
-                            <label for="password" class="block text-sm font-semibold text-[#1c1b1b] font-['Inter'] mb-1.5">Password</label>
-                            <div class="relative" x-data="{ show: false }">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                    <span class="material-symbols-outlined text-[#9ca3af] text-xl">lock</span>
-                                </div>
-                                <input
-                                    wire:model="password"
-                                    :type="show ? 'text' : 'password'"
-                                    id="password"
-                                    placeholder="Min. 8 characters"
-                                    class="w-full pl-11 pr-12 py-3 rounded-lg border-2 border-[#d1d5db] bg-white text-[#1c1b1b] font-['Inter'] placeholder:text-[#9ca3af] focus:border-[#b90027] focus:ring-2 focus:ring-[#b90027]/20 outline-none transition-all duration-200"
-                                    required
-                                    autocomplete="new-password"
-                                >
-                                <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 pr-3.5 flex items-center">
-                                    <span class="material-symbols-outlined text-[#9ca3af] text-xl" x-text="show ? 'visibility_off' : 'visibility'">visibility</span>
-                                </button>
-                            </div>
-                            @error('password') <p class="mt-1.5 text-sm text-[#b90027] font-['Inter']">{{ $message }}</p> @enderror
+                    {{-- Confirm Password --}}
+                    <div>
+                        <label for="password_confirmation" class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">CONFIRM PASSWORD</label>
+                        <div class="relative" x-data="{ show2: false }">
+                            <span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">lock</span>
+                            <input wire:model="password_confirmation"
+                                   :type="show2 ? 'text' : 'password'"
+                                   id="password_confirmation"
+                                   autocomplete="new-password"
+                                   required
+                                   placeholder="Re-enter password"
+                                   class="w-full pl-xl pr-xl py-md bg-surface-container-lowest border-[1.5px] border-on-surface font-body-md placeholder:text-outline-variant transition-all focus:border-primary focus:outline-none">
+                            <button type="button" @click="show2 = !show2"
+                                    class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant hover:text-on-surface transition-colors"
+                                    x-text="show2 ? 'visibility_off' : 'visibility'">visibility</button>
                         </div>
+                        @error('password_confirmation') <p class="font-body-sm text-error mt-xs">{{ $message }}</p> @enderror
+                    </div>
 
-                        {{-- Password Confirmation --}}
-                        <div>
-                            <label for="password_confirmation" class="block text-sm font-semibold text-[#1c1b1b] font-['Inter'] mb-1.5">Confirm Password</label>
-                            <div class="relative" x-data="{ show2: false }">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                    <span class="material-symbols-outlined text-[#9ca3af] text-xl">lock</span>
-                                </div>
-                                <input
-                                    wire:model="password_confirmation"
-                                    :type="show2 ? 'text' : 'password'"
-                                    id="password_confirmation"
-                                    placeholder="Re-enter password"
-                                    class="w-full pl-11 pr-12 py-3 rounded-lg border-2 border-[#d1d5db] bg-white text-[#1c1b1b] font-['Inter'] placeholder:text-[#9ca3af] focus:border-[#b90027] focus:ring-2 focus:ring-[#b90027]/20 outline-none transition-all duration-200"
-                                    required
-                                    autocomplete="new-password"
-                                >
-                                <button type="button" @click="show2 = !show2" class="absolute inset-y-0 right-0 pr-3.5 flex items-center">
-                                    <span class="material-symbols-outlined text-[#9ca3af] text-xl" x-text="show2 ? 'visibility_off' : 'visibility'">visibility</span>
-                                </button>
-                            </div>
-                            @error('password_confirmation') <p class="mt-1.5 text-sm text-[#b90027] font-['Inter']">{{ $message }}</p> @enderror
-                        </div>
+                    {{-- Terms (HTML only, no wire:model) --}}
+                    <div class="flex items-start gap-sm">
+                        <input type="checkbox" id="terms" required
+                               class="mt-0.5 w-4 h-4 border-[1.5px] border-on-surface text-primary focus:ring-primary">
+                        <label for="terms" class="font-body-sm text-on-surface-variant cursor-pointer">
+                            I agree to the
+                            <a href="#" class="text-primary font-semibold hover:underline">Terms of Service</a>
+                            and
+                            <a href="#" class="text-primary font-semibold hover:underline">Privacy Policy</a>
+                        </label>
+                    </div>
 
-                        {{-- Terms (display only - not a Livewire prop) --}}
-                        <div class="flex items-start gap-2">
-                            <input
-                                type="checkbox"
-                                id="terms"
-                                class="mt-0.5 w-4 h-4 rounded border-2 border-[#d1d5db] text-[#b90027] focus:ring-[#b90027]/20"
-                                required
-                            >
-                            <label for="terms" class="text-sm text-[#6b7280] font-['Inter']">
-                                I agree to the
-                                <a href="#" class="font-semibold text-[#b90027] hover:text-[#9a0020]">Terms of Service</a>
-                                and
-                                <a href="#" class="font-semibold text-[#b90027] hover:text-[#9a0020]">Privacy Policy</a>
-                            </label>
-                        </div>
+                    {{-- Create Account CTA --}}
+                    <button type="submit"
+                            class="w-full bg-primary text-on-primary py-md font-label-caps text-label-caps uppercase tracking-widest pop-hover active:scale-95 transition-all duration-150 border-[1.5px] border-on-surface flex items-center justify-center gap-sm shadow-[4px_4px_0px_#1c1b1b] hover:shadow-[6px_6px_0px_#f1c100] hover:-translate-x-0.5 hover:-translate-y-0.5">
+                        <span>Create Account</span>
+                        <span class="material-symbols-outlined text-[18px]">person_add</span>
+                    </button>
+                </form>
 
-                        {{-- Submit --}}
-                        <button type="submit" class="w-full bg-[#b90027] text-white font-bold font-['Inter'] py-3.5 px-6 rounded-lg hover:bg-[#9a0020] transition-all duration-200 flex items-center justify-center gap-2 shadow-[4px_4px_0px_#1a1a1a] hover:shadow-[6px_6px_0px_#f1c100] active:translate-x-1 active:translate-y-1 active:shadow-none">
-                            <span>Create Account</span>
-                            <span class="material-symbols-outlined text-lg">person_add</span>
-                        </button>
-                    </form>
-
-                    {{-- Login Link --}}
-                    <p class="mt-8 text-center text-sm text-[#6b7280] font-['Inter']">
-                        Already have an account?
-                        <a href="{{ route('login') }}" class="font-bold text-[#b90027] hover:text-[#9a0020] transition-colors">Sign in</a>
-                    </p>
+                {{-- Sign In link --}}
+                <div class="mt-xl pt-lg border-t-[1.5px] border-outline-variant text-center">
+                    <p class="font-body-sm text-on-surface-variant mb-sm">Already have an account?</p>
+                    <a href="{{ route('login') }}"
+                       class="inline-block w-full border-[1.5px] border-secondary text-secondary py-md font-label-caps text-label-caps uppercase hover:bg-secondary hover:text-on-secondary transition-all pop-hover shadow-[4px_4px_0px_#1c1b1b] hover:shadow-[6px_6px_0px_#f1c100] hover:-translate-x-0.5 hover:-translate-y-0.5">
+                        Sign In
+                    </a>
                 </div>
             </div>
         </div>

@@ -1,120 +1,96 @@
 <div>
-    <div class="min-h-screen bg-[#fcf9f8] flex">
-        {{-- Left: Brand Imagery --}}
-        <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-[#b90027] to-[#1c1b1b]">
-            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 25% 25%, #f1c100 1px, transparent 1px), radial-gradient(circle at 75% 75%, #f1c100 1px, transparent 1px); background-size: 40px 40px;"></div>
-            <div class="relative flex flex-col justify-center px-16 w-full">
-                <div class="mb-8">
-                    <a href="{{ route('home') }}" class="inline-flex items-center gap-3">
-                        <div class="w-12 h-12 bg-[#f1c100] rounded-lg flex items-center justify-center">
-                            <span class="text-2xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque']">GD</span>
-                        </div>
-                        <span class="text-3xl font-black text-white font-['Bricolage_Grotesque'] tracking-tight">GhanaDirect</span>
-                    </a>
-                </div>
-
-                <h1 class="text-5xl font-black text-white font-['Bricolage_Grotesque'] leading-[1.1] tracking-tight mb-6">
-                    Reset Your<br>Password
-                </h1>
-
-                <p class="text-xl text-white/80 font-['Inter'] leading-relaxed mb-8 max-w-md">
-                    No worries! Enter your email and we'll send you instructions to reset your password.
-                </p>
-
-                <div class="max-w-md p-6 rounded-xl bg-white/10 backdrop-blur-sm">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-[#f1c100]/20 flex items-center justify-center flex-shrink-0">
-                            <span class="material-symbols-outlined text-[#f1c100] text-2xl">lock_reset</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white font-['Inter']">Quick & Secure</h3>
-                            <p class="text-sm text-white/70 font-['Inter']">We'll send a reset link to your registered email</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="absolute bottom-0 left-0 right-0 h-2"
-                     style="background: repeating-linear-gradient(90deg, #b90027 0, #b90027 20px, #f1c100 20px, #f1c100 40px, #316948 40px, #316948 60px, #1c1b1b 60px, #1c1b1b 80px);">
-                </div>
-            </div>
+    {{-- Auth card centered within layouts.app's <main> slot --}}
+    <div class="flex-grow flex items-center justify-center py-xl px-container-margin relative overflow-hidden bg-background">
+        {{-- Abstract background decoration --}}
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+            <div class="absolute top-10 left-10 w-64 h-64 border-[1.5px] border-on-surface rotate-12"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 border-[1.5px] border-primary -rotate-6"></div>
         </div>
 
-        {{-- Right: Forgot Password Form --}}
-        <div class="w-full lg:w-1/2 flex items-center justify-center px-6 py-12">
-            <div class="w-full max-w-md">
-                <div class="lg:hidden text-center mb-10">
-                    <a href="{{ route('home') }}" class="inline-flex items-center gap-2">
-                        <div class="w-10 h-10 bg-[#f1c100] rounded-lg flex items-center justify-center">
-                            <span class="text-xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque']">GD</span>
-                        </div>
-                        <span class="text-2xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque']">GhanaDirect</span>
-                    </a>
+        {{-- Authentication Container --}}
+        <div class="grid grid-cols-1 lg:grid-cols-2 max-w-5xl w-full bg-surface border-[1.5px] border-on-surface shadow-none overflow-hidden">
+
+            {{-- Left: Brand Imagery --}}
+            <div class="hidden lg:flex flex-col justify-between p-xl bg-secondary-container relative">
+                <div>
+                    <h1 class="font-display-lg text-display-lg text-on-secondary-container mb-md leading-tight">
+                        Reset Your<br><span class="text-primary">Password</span>.
+                    </h1>
+                    <p class="font-body-lg text-on-secondary-container max-w-sm">
+                        No worries — enter your email and we'll send you a secure reset link.
+                    </p>
                 </div>
 
-                <div class="bg-white rounded-xl p-8 pop-border-primary">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-[#b90027]/10 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-[#b90027] text-xl">lock_reset</span>
+                {{-- Icon panel --}}
+                <div class="relative h-56 w-full border-[1.5px] border-on-surface overflow-hidden my-lg bg-surface-container-highest flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <span class="material-symbols-outlined text-[60px] text-on-secondary-container/40" style="font-variation-settings: 'FILL' 1;">lock_reset</span>
+                        <p class="font-label-caps text-label-caps text-on-secondary-container/60 mt-sm">QUICK & SECURE RECOVERY</p>
+                    </div>
+                    <div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+                </div>
+
+                {{-- Trust badge --}}
+                <div class="flex items-center gap-sm">
+                    <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">security</span>
+                    <span class="font-label-caps text-label-caps text-on-secondary-container">Reset link expires in 60 minutes</span>
+                </div>
+            </div>
+
+            {{-- Right: Forgot Password Form --}}
+            <div class="p-lg md:p-xl flex flex-col justify-center bg-surface relative">
+                <div class="mb-lg">
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-xs uppercase tracking-tight">Forgot Password?</h2>
+                    <p class="font-body-sm text-on-surface-variant">We'll send you a reset link to your email.</p>
+                </div>
+
+                {{-- Status Message --}}
+                @if(session('status'))
+                    <div class="mb-md p-sm bg-secondary-container border-l-4 border-secondary flex items-center gap-sm">
+                        <span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        <p class="font-body-sm text-on-secondary-container font-semibold">{{ session('status') }}</p>
+                    </div>
+                @endif
+
+                {{-- Errors --}}
+                @if($errors->any())
+                    <div class="mb-md p-sm bg-error-container border-l-4 border-error">
+                        <p class="font-body-sm text-error font-semibold">{{ $errors->first() }}</p>
+                    </div>
+                @endif
+
+                <form wire:submit="sendResetLink" class="space-y-md">
+                    {{-- Email --}}
+                    <div>
+                        <label for="email" class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">EMAIL ADDRESS</label>
+                        <div class="relative">
+                            <span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">mail</span>
+                            <input wire:model="email"
+                                   type="email"
+                                   id="email"
+                                   autocomplete="email"
+                                   required
+                                   placeholder="e.g. kwame@direct.com.gh"
+                                   class="w-full pl-xl pr-md py-md bg-surface-container-lowest border-[1.5px] border-on-surface font-body-md placeholder:text-outline-variant transition-all focus:border-primary focus:outline-none">
                         </div>
-                        <div>
-                            <h2 class="text-2xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque'] tracking-tight">Forgot password?</h2>
-                            <p class="text-sm text-[#6b7280] font-['Inter']">We'll send you a reset link</p>
-                        </div>
+                        @error('email') <p class="font-body-sm text-error mt-xs">{{ $message }}</p> @enderror
                     </div>
 
-                    {{-- Status Message --}}
-                    @if(session('status'))
-                        <div class="mb-6 p-4 rounded-lg bg-green-50 border-l-4 border-[#316948]">
-                            <div class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-[#316948] text-lg">check_circle</span>
-                                <p class="text-sm font-semibold text-[#316948] font-['Inter']">{{ session('status') }}</p>
-                            </div>
-                        </div>
-                    @endif
+                    {{-- Send Reset Link CTA --}}
+                    <button type="submit"
+                            class="w-full bg-primary text-on-primary py-md font-label-caps text-label-caps uppercase tracking-widest pop-hover active:scale-95 transition-all duration-150 border-[1.5px] border-on-surface flex items-center justify-center gap-sm shadow-[4px_4px_0px_#1c1b1b] hover:shadow-[6px_6px_0px_#f1c100] hover:-translate-x-0.5 hover:-translate-y-0.5">
+                        <span>Send Reset Link</span>
+                        <span class="material-symbols-outlined text-[18px]">send</span>
+                    </button>
+                </form>
 
-                    {{-- Error Message --}}
-                    @if($errors->any())
-                        <div class="mb-6 p-4 rounded-lg bg-red-50 border-l-4 border-[#b90027]">
-                            <div class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-[#b90027] text-lg">error</span>
-                                <p class="text-sm font-semibold text-[#b90027] font-['Inter']">{{ $errors->first() }}</p>
-                            </div>
-                        </div>
-                    @endif
-
-                    <form wire:submit="sendResetLink" class="space-y-6">
-                        {{-- Email --}}
-                        <div>
-                            <label for="email" class="block text-sm font-semibold text-[#1c1b1b] font-['Inter'] mb-1.5">Email Address</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                                    <span class="material-symbols-outlined text-[#9ca3af] text-xl">mail</span>
-                                </div>
-                                <input
-                                    wire:model="email"
-                                    type="email"
-                                    id="email"
-                                    placeholder="you@example.com"
-                                    class="w-full pl-11 pr-4 py-3 rounded-lg border-2 border-[#d1d5db] bg-white text-[#1c1b1b] font-['Inter'] placeholder:text-[#9ca3af] focus:border-[#b90027] focus:ring-2 focus:ring-[#b90027]/20 outline-none transition-all duration-200"
-                                    required
-                                    autocomplete="email"
-                                >
-                            </div>
-                            @error('email') <p class="mt-1.5 text-sm text-[#b90027] font-['Inter']">{{ $message }}</p> @enderror
-                        </div>
-
-                        {{-- Submit --}}
-                        <button type="submit" class="w-full bg-[#b90027] text-white font-bold font-['Inter'] py-3.5 px-6 rounded-lg hover:bg-[#9a0020] transition-all duration-200 flex items-center justify-center gap-2 shadow-[4px_4px_0px_#1a1a1a] hover:shadow-[6px_6px_0px_#f1c100] active:translate-x-1 active:translate-y-1 active:shadow-none">
-                            <span>Send Reset Link</span>
-                            <span class="material-symbols-outlined text-lg">send</span>
-                        </button>
-                    </form>
-
-                    {{-- Back to Login --}}
-                    <p class="mt-8 text-center text-sm text-[#6b7280] font-['Inter']">
-                        Remember your password?
-                        <a href="{{ route('login') }}" class="font-bold text-[#b90027] hover:text-[#9a0020] transition-colors">Back to sign in</a>
-                    </p>
+                {{-- Back to Sign In --}}
+                <div class="mt-xl pt-lg border-t-[1.5px] border-outline-variant text-center">
+                    <p class="font-body-sm text-on-surface-variant mb-sm">Remember your password?</p>
+                    <a href="{{ route('login') }}"
+                       class="inline-block w-full border-[1.5px] border-secondary text-secondary py-md font-label-caps text-label-caps uppercase hover:bg-secondary hover:text-on-secondary transition-all pop-hover shadow-[4px_4px_0px_#1c1b1b] hover:shadow-[6px_6px_0px_#f1c100] hover:-translate-x-0.5 hover:-translate-y-0.5">
+                        Back to Sign In
+                    </a>
                 </div>
             </div>
         </div>

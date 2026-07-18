@@ -50,6 +50,14 @@ class DatabaseSeeder extends Seeder
         Category::create(['name' => 'Agriculture & Farming', 'slug' => 'agriculture-farming', 'icon' => '🌿']);
         Category::create(['name' => 'Hospitality & Tourism', 'slug' => 'hospitality-tourism', 'icon' => '🏨']);
 
-        $this->call(GhanaRegionsDistrictsSeeder::class);
+        $this->call([
+            GhanaRegionsDistrictsSeeder::class,
+            CurrenciesSeeder::class,
+            AdZonesSeeder::class,
+            UsersSeeder::class,
+            BusinessesSeeder::class,
+            ProductsSeeder::class,
+            ReviewsSeeder::class,
+        ]);
     }
 }
