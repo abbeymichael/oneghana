@@ -1,104 +1,95 @@
 <div>
-    <div class="min-h-screen bg-[#fcf9f8] flex">
-        {{-- Left: Brand Imagery --}}
-        <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-gradient-to-br from-[#b90027] to-[#1c1b1b]">
-            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 25% 25%, #f1c100 1px, transparent 1px), radial-gradient(circle at 75% 75%, #f1c100 1px, transparent 1px); background-size: 40px 40px;"></div>
-            <div class="relative flex flex-col justify-center px-16 w-full">
-                <div class="mb-8">
-                    <a href="{{ route('home') }}" class="inline-flex items-center gap-3">
-                        <div class="w-12 h-12 bg-[#f1c100] rounded-lg flex items-center justify-center">
-                            <span class="text-2xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque']">GD</span>
-                        </div>
-                        <span class="text-3xl font-black text-white font-['Bricolage_Grotesque'] tracking-tight">GhanaDirect</span>
-                    </a>
-                </div>
-
-                <h1 class="text-5xl font-black text-white font-['Bricolage_Grotesque'] leading-[1.1] tracking-tight mb-6">
-                    Verify Your<br>Email Address
-                </h1>
-
-                <p class="text-xl text-white/80 font-['Inter'] leading-relaxed mb-8 max-w-md">
-                    Please confirm your email to unlock all features and start managing your business listings.
-                </p>
-
-                <div class="max-w-md p-6 rounded-xl bg-white/10 backdrop-blur-sm">
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[#f1c100] text-lg mt-0.5">check_circle</span>
-                            <p class="text-sm text-white/80 font-['Inter']">Receive customer enquiries directly</p>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[#f1c100] text-lg mt-0.5">check_circle</span>
-                            <p class="text-sm text-white/80 font-['Inter']">Manage your business listings and products</p>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[#f1c100] text-lg mt-0.5">check_circle</span>
-                            <p class="text-sm text-white/80 font-['Inter']">Access your merchant dashboard with analytics</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="absolute bottom-0 left-0 right-0 h-2"
-                     style="background: repeating-linear-gradient(90deg, #b90027 0, #b90027 20px, #f1c100 20px, #f1c100 40px, #316948 40px, #316948 60px, #1c1b1b 60px, #1c1b1b 80px);">
-                </div>
-            </div>
+    {{-- Auth card centered within layouts.app's <main> slot --}}
+    <div class="flex-grow flex items-center justify-center py-xl px-container-margin relative overflow-hidden bg-background">
+        {{-- Abstract background decoration --}}
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+            <div class="absolute top-10 left-10 w-64 h-64 border-[1.5px] border-on-surface rotate-12"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 border-[1.5px] border-primary -rotate-6"></div>
         </div>
 
-        {{-- Right: Verify Email --}}
-        <div class="w-full lg:w-1/2 flex items-center justify-center px-6 py-12">
-            <div class="w-full max-w-md">
-                <div class="lg:hidden text-center mb-10">
-                    <a href="{{ route('home') }}" class="inline-flex items-center gap-2">
-                        <div class="w-10 h-10 bg-[#f1c100] rounded-lg flex items-center justify-center">
-                            <span class="text-xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque']">GD</span>
-                        </div>
-                        <span class="text-2xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque']">GhanaDirect</span>
-                    </a>
+        {{-- Authentication Container --}}
+        <div class="grid grid-cols-1 lg:grid-cols-2 max-w-5xl w-full bg-surface border-[1.5px] border-on-surface shadow-none overflow-hidden">
+
+            {{-- Left: Brand Imagery --}}
+            <div class="hidden lg:flex flex-col justify-between p-xl bg-secondary-container relative">
+                <div>
+                    <h1 class="font-display-lg text-display-lg text-on-secondary-container mb-md leading-tight">
+                        Verify Your<br><span class="text-primary">Email</span><br>Address.
+                    </h1>
+                    <p class="font-body-lg text-on-secondary-container max-w-sm">
+                        Confirm your email to unlock all features and start managing your listings.
+                    </p>
                 </div>
 
-                <div class="bg-white rounded-xl p-8 pop-border-primary text-center">
-                    <div class="w-16 h-16 rounded-full bg-[#f1c100]/10 flex items-center justify-center mx-auto mb-6">
-                        <span class="material-symbols-outlined text-[#f1c100] text-3xl">mark_email_unread</span>
-                    </div>
+                {{-- Benefits list --}}
+                <div class="space-y-md my-lg">
+                    @php
+                        $perks = [
+                            ['icon' => 'mark_email_read',  'text' => 'Receive customer enquiries directly'],
+                            ['icon' => 'storefront',        'text' => 'Manage your business listings & products'],
+                            ['icon' => 'bar_chart',         'text' => 'Access your merchant dashboard with analytics'],
+                        ];
+                    @endphp
+                    @foreach($perks as $p)
+                        <div class="flex items-start gap-sm">
+                            <span class="material-symbols-outlined text-secondary text-[18px] mt-0.5" style="font-variation-settings: 'FILL' 1;">{{ $p['icon'] }}</span>
+                            <p class="font-body-sm text-on-secondary-container">{{ $p['text'] }}</p>
+                        </div>
+                    @endforeach
+                </div>
 
-                    <h2 class="text-2xl font-black text-[#1c1b1b] font-['Bricolage_Grotesque'] tracking-tight mb-2">Check your email</h2>
-                    <p class="text-[#6b7280] font-['Inter'] mb-6">
+                {{-- Trust badge --}}
+                <div class="flex items-center gap-sm">
+                    <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                    <span class="font-label-caps text-label-caps text-on-secondary-container">Trusted by 50,000+ Enterprises</span>
+                </div>
+            </div>
+
+            {{-- Right: Verify Email Panel --}}
+            <div class="p-lg md:p-xl flex flex-col justify-center bg-surface relative">
+                <div class="mb-lg">
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-xs uppercase tracking-tight">Check Your Email</h2>
+                    <p class="font-body-sm text-on-surface-variant">
                         We've sent a verification link to
-                        <span class="font-semibold text-[#1c1b1b]">{{ auth()->user()?->email ?? 'your email' }}</span>
+                        <span class="font-semibold text-on-surface">{{ auth()->user()?->email ?? 'your email' }}</span>
                     </p>
+                </div>
 
-                    <div class="bg-[#fefce8] border border-[#f1c100]/30 rounded-lg p-4 mb-6 text-left">
-                        <div class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[#f1c100] text-lg mt-0.5">info</span>
-                            <div>
-                                <p class="text-sm font-semibold text-[#1c1b1b] font-['Inter']">Didn't receive the email?</p>
-                                <p class="text-sm text-[#6b7280] font-['Inter'] mt-0.5">Check your spam folder or click the button below to resend.</p>
-                            </div>
-                        </div>
+                {{-- Info card --}}
+                <div class="p-sm bg-surface-container border-[1.5px] border-outline-variant flex items-start gap-sm mb-lg">
+                    <span class="material-symbols-outlined text-outline text-[18px] mt-0.5" style="font-variation-settings: 'FILL' 1;">info</span>
+                    <div>
+                        <p class="font-label-caps text-label-caps text-on-surface">DIDN'T RECEIVE THE EMAIL?</p>
+                        <p class="font-body-sm text-on-surface-variant mt-xs">Check your spam folder or click the button below to resend.</p>
                     </div>
+                </div>
 
-                    {{-- Status --}}
-                    @if(session('status'))
-                        <div class="mb-6 p-4 rounded-lg bg-green-50 border-l-4 border-[#316948] text-left">
-                            <div class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-[#316948] text-lg">check_circle</span>
-                                <p class="text-sm font-semibold text-[#316948] font-['Inter']">{{ session('status') }}</p>
-                            </div>
-                        </div>
-                    @endif
+                {{-- Status Message --}}
+                @if(session('status'))
+                    <div class="mb-md p-sm bg-secondary-container border-l-4 border-secondary flex items-center gap-sm">
+                        <span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        <p class="font-body-sm text-on-secondary-container font-semibold">{{ session('status') }}</p>
+                    </div>
+                @endif
 
-                    <form wire:submit="resend" class="space-y-4">
-                        <button type="submit" class="w-full bg-[#b90027] text-white font-bold font-['Inter'] py-3.5 px-6 rounded-lg hover:bg-[#9a0020] transition-all duration-200 flex items-center justify-center gap-2 shadow-[4px_4px_0px_#1a1a1a] hover:shadow-[6px_6px_0px_#f1c100] active:translate-x-1 active:translate-y-1 active:shadow-none">
-                            <span>Resend Verification Email</span>
-                            <span class="material-symbols-outlined text-lg">refresh</span>
-                        </button>
-                    </form>
+                {{-- Resend Form --}}
+                <form wire:submit="resend" class="space-y-md">
+                    <button type="submit"
+                            class="w-full bg-primary text-on-primary py-md font-label-caps text-label-caps uppercase tracking-widest pop-hover active:scale-95 transition-all duration-150 border-[1.5px] border-on-surface flex items-center justify-center gap-sm shadow-[4px_4px_0px_#1c1b1b] hover:shadow-[6px_6px_0px_#f1c100] hover:-translate-x-0.5 hover:-translate-y-0.5">
+                        <span>Resend Verification Email</span>
+                        <span class="material-symbols-outlined text-[18px]">refresh</span>
+                    </button>
+                </form>
 
-                    <form method="POST" action="{{ route('logout') }}" class="mt-4">
+                {{-- Logout --}}
+                <div class="mt-xl pt-lg border-t-[1.5px] border-outline-variant text-center">
+                    <p class="font-body-sm text-on-surface-variant mb-sm">Wrong account?</p>
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="w-full text-[#6b7280] font-semibold font-['Inter'] py-3 px-6 rounded-lg border-2 border-[#d1d5db] hover:bg-gray-50 hover:text-[#b90027] transition-colors flex items-center justify-center gap-2">
-                            <span class="material-symbols-outlined text-lg">logout</span>
-                            <span>Sign Out</span>
+                        <button type="submit"
+                                class="inline-block w-full border-[1.5px] border-on-surface text-on-surface-variant py-md font-label-caps text-label-caps uppercase hover:bg-surface-container transition-all flex items-center justify-center gap-sm">
+                            <span class="material-symbols-outlined text-[18px]">logout</span>
+                            Sign Out
                         </button>
                     </form>
                 </div>
